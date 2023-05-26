@@ -1,0 +1,27 @@
+.Filterbox-container{
+    display: inline-flex;
+    flex-direction: column;
+}
+
+.Filterbox{
+    background: rgb(135, 135, 135);
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    /* text-align: center; */
+}
+
+.Filterbox-selected{
+    background: rgb(0, 0, 0)
+}
+.Filterbox p{
+    text-align: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    color: aliceblue;
+}
+.Filterbox:hover{
+    border-style: solid;
+    border-color: rgb(0, 0, 0);
+}
