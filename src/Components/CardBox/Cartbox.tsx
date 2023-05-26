@@ -3,10 +3,13 @@ import "./Cartbox.css";
 
 interface ICartboxProps {
   cartData: ICartData;
+  addToList(index: number): void;
 }
 
 const Cartbox: React.FC<ICartboxProps> = (props) => {
-  function addToWishlist(): void {}
+  function addToWishlist(): void {
+    props.addToList(props.cartData.id);
+  }
   return (
     <div className="card-container">
       <img className="image-base image" src={props.cartData.image1} alt="" />

@@ -3,13 +3,13 @@ import React, { useState } from "react";
 import FilterBox from "./Components/Filterbox/Filterbox";
 import Cartbox from "./Components/CardBox/Cartbox";
 import CartDatas from "./Mock/CartDatas";
-import { type } from "@testing-library/user-event/dist/type";
 
 const allSizes: readonly string[] = ["XS", "S", "M", "ML", "L", "XL", "XXL"];
 function App() {
   const [currentFilter, setCurrentFilter] = useState<string[]>([]);
   const [products, setProducts] = useState<ICartData[]>(CartDatas);
-
+  const [addedProducts, setAddedProducts] = useState<ICartData[]>([]);
+  console.log(addedProducts);
   function filterUpdated(clickedFilterName: string): void {
     setCurrentFilter((prev) => {
       let prevValue: string[] = [...prev];
@@ -35,23 +35,41 @@ function App() {
     return false;
   }
 
+  function addToListItem(id: number) {
+    const item = products.find((i) => i.id === id);
+    if (item !== undefined) {
+      setAddedProducts((prev) => {
+        return [...prev, item];
+      });
+    }
+  }
+
   return (
     <div className="App">
-      <div className="Filters">
-        {allSizes.map((item, index) => (
-          <FilterBox
-            key={index}
-            isSelected={currentFilter.includes(item)}
-            name={item}
-            onClick={filterUpdated}
-          />
-        ))}
-      </div>
-      <div className="Items">
-        {products.map(
-          (item, index) =>
-            canShowItem(item) && <Cartbox key={index} cartData={item} />
-        )}
+      <div className="Bucket-button"></div>
+      <div className="container">
+        <div className="Filters">
+          {allSizes.map((item, index) => (
+            <FilterBox
+              key={index}
+              isSelected={currentFilter.includes(item)}
+              name={item}
+              onClick={filterUpdated}
+            />
+          ))}
+        </div>
+        <div className="Items">
+          {products.map(
+            (item, index) =>
+              canShowItem(item) && (
+                <Cartbox
+                  key={index}
+                  cartData={item}
+                  addToList={addToListItem}
+                />
+              )
+          )}
+        </div>
       </div>
     </div>
   );

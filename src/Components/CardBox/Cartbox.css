@@ -16,11 +16,18 @@
   transition: box-shadow 0.2s ease 0s;
 }
 
+.card-container h2{
+  margin-left: 6px;
+  margin-right: 6px;
+  text-align: center;
+}
+
 .card-container:hover {
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 
 .btn{
+  border-radius: 30px;
   border: none;
   background-color: rgb(0, 0, 0);
   cursor: pointer;

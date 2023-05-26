@@ -1,8 +1,9 @@
 interface ICartData {
+    id: number;
     name: string;
     image1: string;
     image2: string;
-    isFreeShipping: boolean;
     price: number;
-    sizes: string[]
+    sizes: string[];
+    isFreeShipping: boolean;
   }
