@@ -1,5 +1,6 @@
 import React from "react";
 import "./Cartbox.css";
+import { Link } from "react-router-dom";
 
 interface ICartboxProps {
   cartData: ICartData;
@@ -20,9 +21,12 @@ const Cartbox: React.FC<ICartboxProps> = (props) => {
       />
       <h2 className="title">{props.cartData.name}</h2>
       <p className="price">{props.cartData.price}</p>
-      <button className="btn" onClick={addToWishlist}>
+      {/* <button className="btn" onClick={addToWishlist}>
         Add to list
-      </button>
+      </button> */}
+      <Link className="btn" to={`/products/${props.cartData.id}`}>
+        View details
+      </Link>
     </div>
   );
 };
